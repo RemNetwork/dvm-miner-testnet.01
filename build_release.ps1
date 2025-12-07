@@ -28,29 +28,29 @@ Clean-Directory "dvm-miner-linux-x64-$version"
 # Windows Release
 Write-Host "`nBuilding Windows release..." -ForegroundColor Green
 New-Item -ItemType Directory -Path "dvm-miner-windows-x64-$version" | Out-Null
-Copy-Item -Recurse -Exclude "__pycache__","*.pyc",".git",".gitignore","RELEASE.md","build_release.ps1","build_release.sh" -Path "." -Destination "dvm-miner-windows-x64-$version"
+Get-ChildItem -Path "." -Exclude "__pycache__","*.pyc",".git","RELEASE.md","build_release.ps1","build_release.sh","dvm-miner-*" | Copy-Item -Recurse -Destination "dvm-miner-windows-x64-$version"
 Get-ChildItem -Path "dvm-miner-windows-x64-$version" -Recurse -Include "__pycache__" | Remove-Item -Recurse -Force
 Get-ChildItem -Path "dvm-miner-windows-x64-$version" -Recurse -Include "*.pyc" | Remove-Item -Force
 Compress-Archive -Path "dvm-miner-windows-x64-$version" -DestinationPath "dvm-miner-windows-x64-$version.zip" -Force
-Write-Host "✓ Windows release created: dvm-miner-windows-x64-$version.zip" -ForegroundColor Green
+Write-Host "Windows release created: dvm-miner-windows-x64-$version.zip" -ForegroundColor Green
 
 # macOS Release
 Write-Host "`nBuilding macOS release..." -ForegroundColor Green
 New-Item -ItemType Directory -Path "dvm-miner-macos-$version" | Out-Null
-Copy-Item -Recurse -Exclude "__pycache__","*.pyc",".git",".gitignore","RELEASE.md","build_release.ps1","build_release.sh" -Path "." -Destination "dvm-miner-macos-$version"
+Get-ChildItem -Path "." -Exclude "__pycache__","*.pyc",".git","RELEASE.md","build_release.ps1","build_release.sh","dvm-miner-*" | Copy-Item -Recurse -Destination "dvm-miner-macos-$version"
 Get-ChildItem -Path "dvm-miner-macos-$version" -Recurse -Include "__pycache__" | Remove-Item -Recurse -Force
 Get-ChildItem -Path "dvm-miner-macos-$version" -Recurse -Include "*.pyc" | Remove-Item -Force
 Compress-Archive -Path "dvm-miner-macos-$version" -DestinationPath "dvm-miner-macos-$version.zip" -Force
-Write-Host "✓ macOS release created: dvm-miner-macos-$version.zip" -ForegroundColor Green
+Write-Host "macOS release created: dvm-miner-macos-$version.zip" -ForegroundColor Green
 
 # Linux Release
 Write-Host "`nBuilding Linux release..." -ForegroundColor Green
 New-Item -ItemType Directory -Path "dvm-miner-linux-x64-$version" | Out-Null
-Copy-Item -Recurse -Exclude "__pycache__","*.pyc",".git",".gitignore","RELEASE.md","build_release.ps1","build_release.sh" -Path "." -Destination "dvm-miner-linux-x64-$version"
+Get-ChildItem -Path "." -Exclude "__pycache__","*.pyc",".git","RELEASE.md","build_release.ps1","build_release.sh","dvm-miner-*" | Copy-Item -Recurse -Destination "dvm-miner-linux-x64-$version"
 Get-ChildItem -Path "dvm-miner-linux-x64-$version" -Recurse -Include "__pycache__" | Remove-Item -Recurse -Force
 Get-ChildItem -Path "dvm-miner-linux-x64-$version" -Recurse -Include "*.pyc" | Remove-Item -Force
 Compress-Archive -Path "dvm-miner-linux-x64-$version" -DestinationPath "dvm-miner-linux-x64-$version.zip" -Force
-Write-Host "✓ Linux release created: dvm-miner-linux-x64-$version.zip" -ForegroundColor Green
+Write-Host "Linux release created: dvm-miner-linux-x64-$version.zip" -ForegroundColor Green
 
 Write-Host "`n============================================" -ForegroundColor Cyan
 Write-Host "  Release packages created successfully!" -ForegroundColor Green
@@ -63,8 +63,6 @@ Write-Host "  - dvm-miner-linux-x64-$version.zip" -ForegroundColor White
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Yellow
 Write-Host "  1. Test each package on its respective platform" -ForegroundColor White
-Write-Host "  2. Create a GitHub release at:" -ForegroundColor White
-Write-Host "     https://github.com/RemNetwork/dvm-miner-testnet.01/releases" -ForegroundColor Cyan
-Write-Host "  3. Upload all three zip files to the release" -ForegroundColor White
+Write-Host "  2. Create a GitHub release" -ForegroundColor White
+Write-Host "  3. Upload all three files to the release" -ForegroundColor White
 Write-Host ""
-

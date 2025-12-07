@@ -1,0 +1,2 @@
+"""DVM Miner - Clean Version"""
+
